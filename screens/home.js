@@ -13,16 +13,16 @@ import { Icon, Button } from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
 
 const data = [
-  { id: '1', imagePath: require('../assets/icon/ic_menu_02.png'), screenName: 'Attendance' },
-  { id: '2', imagePath: require('../assets/icon/ic_menu_09.png'), screenName: 'Diary' },
-  { id: '3', imagePath: require('../assets/icon/ic_menu_10.png'), screenName: 'Notice' },
-  { id: '4', imagePath: require('../assets/icon/ic_menu_04.png'), screenName: 'Result' },
-  { id: '5', imagePath: require('../assets/icon/ic_menu_06.png'), screenName: 'Growth' },
-  { id: '6', imagePath: require('../assets/icon/ic_menu_03.png'), screenName: 'Exam' },
-  { id: '7', imagePath: require('../assets/icon/ic_menu_07.png'), screenName: 'Holiday' },
-  { id: '8', imagePath: require('../assets/icon/ic_menu_01.png'), screenName: 'Fees' },
-  { id: '9', imagePath: require('../assets/icon/ic_menu_08.png'), screenName: 'Downloads' },
-  { id: '10', imagePath: require('../assets/icon/ic_menu_08.png'), screenName: 'Classes' },
+  { id: '1', imagePath: require('../assets/icon/ic_menu_02.jpg'), screenName: 'Attendance' },
+  { id: '2', imagePath: require('../assets/icon/ic_menu_09.jpg'), screenName: 'Diary' },
+  { id: '3', imagePath: require('../assets/icon/ic_menu_10.jpg'), screenName: 'Notice' },
+  { id: '4', imagePath: require('../assets/icon/ic_menu_04.jpg'), screenName: 'Result' },
+  { id: '5', imagePath: require('../assets/icon/ic_menu_06.jpg'), screenName: 'Growth' },
+  { id: '6', imagePath: require('../assets/icon/ic_menu_03.jpg'), screenName: 'Exam' },
+  { id: '7', imagePath: require('../assets/icon/ic_menu_07.jpg'), screenName: 'Holiday' },
+  { id: '8', imagePath: require('../assets/icon/ic_menu_01.jpg'), screenName: 'Fees' },
+  { id: '9', imagePath: require('../assets/icon/ic_menu_08.jpg'), screenName: 'Downloads' },
+  { id: '10', imagePath: require('../assets/icon/ic_menu_11.jpg'), screenName: 'Lecture' },
 ];
 
 
@@ -66,7 +66,7 @@ export default class Home extends Component {
         <TouchableOpacity style={menuBtn} onPress={() => navigation.navigate(screenName, {
           username, id, class_id
         })}>
-          <Image style={{ paddingHorizontal: '5%' }} source={imagePath} />
+          <Image style={{ paddingHorizontal: '5%', width:75, height:75}} source={imagePath} />
         </TouchableOpacity>
       );
     }

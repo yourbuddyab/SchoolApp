@@ -50,9 +50,8 @@ export default class Login extends Component{
         'Content-Type' : 'application/json',
         },
         body: JSON.stringify({
-            
-            "username" : 8823908641, 
-            "password" : 12345678,
+            "username" : username, 
+            "password" : password,
         }),
         }).then((response) => response.json())
         .then(async(responseJson) => {
@@ -99,7 +98,7 @@ export default class Login extends Component{
                     <TextInput style={styles.inputBox} placeholderTextColor="#000" placeholder={'Phonenumber'} onChangeText={username => this.setState({username})}/>
                     <TextInput style={styles.inputBox} placeholderTextColor="#000" placeholder={'Password'} secureTextEntry={true} onChangeText={password => this.setState({password})}/>
                     <TouchableOpacity onPress={this.submit}>
-                    <Text style={styles.signinButton} >Login</Text>    
+                    <Text style={styles.signinButton}>Login</Text>    
                     </TouchableOpacity>
                 </View>
                 <View style={styles.forget}>
@@ -118,7 +117,6 @@ export default class Login extends Component{
 }
 const styles = StyleSheet.create({
     container:{
-
         backgroundColor:'#f99325',
         height:Dimensions.get("window").height,
         width:Dimensions.get("window").width,
