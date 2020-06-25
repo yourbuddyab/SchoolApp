@@ -17,7 +17,7 @@ export default class App extends Component {
     }
   } 
   componentDidMount(){
-    return fetch('http://schoolapp.jatinwardhan.com/api/timetable/'+this.props.route.params.class_id)
+    return fetch('https://login.schoolapp.info/api/timetable/'+this.props.route.params.class_id)
       .then((response) => response.json())
       .then((responseJson) => {
         // console.error(responseJson);

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Image,
@@ -16,21 +16,23 @@ import { StackActions } from '@react-navigation/native';
 
 
 
-class LoadingScene extends Component {
+class Splash extends Component {
   state = {
     LogoAnime: new Animated.Value(0),
     LogoText: new Animated.Value(0),
     loadingSpinner: false,
   };
-  switchToAuth = async() => {
+  switchToAuth = async () => {
     // console.error(this.props); 
-    const isLoggedIn =  await AsyncStorage.getItem('isLoggedIn');
+    const isLoggedIn = await AsyncStorage.getItem('isLoggedIn');
+
     this.props.navigation.dispatch(
-        StackActions.replace(isLoggedIn == 1 ? 'Home' : 'Login')
-      );
-};
+      StackActions.replace(isLoggedIn == 1 ? 'HomeScreen' : 'AuthScreen', {
+        screen: 'Login'
+      }))
+  };
   componentDidMount() {
-    const {LogoAnime, LogoText} = this.state;
+    const { LogoAnime, LogoText } = this.state;
     Animated.parallel([
       Animated.spring(LogoAnime, {
         toValue: 1,
@@ -47,7 +49,7 @@ class LoadingScene extends Component {
       this.setState({
         loadingSpinner: true,
       });
-      
+
       setTimeout(this.switchToAuth, 1000);
     });
   }
@@ -81,14 +83,14 @@ class LoadingScene extends Component {
             />
           ) : null}
         </Animated.View>
-        <Animated.View style={{opacity: this.state.LogoText}}>
+        <Animated.View style={{ opacity: this.state.LogoText }}>
         </Animated.View>
       </View>
     );
   }
 }
 
-export default LoadingScene;
+export default Splash;
 
 const styles = StyleSheet.create({
   container: {

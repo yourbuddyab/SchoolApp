@@ -20,7 +20,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     const id = this.props.route.params.id;
-    return fetch('http://schoolapp.jatinwardhan.com/api/diary/' + id)
+    return fetch('https://login.schoolapp.info/api/diary/' + id)
       .then(response => response.json())
       .then(responseJson => {
         // console.error(responseJson);

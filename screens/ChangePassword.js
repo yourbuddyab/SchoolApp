@@ -22,7 +22,7 @@ export default class Login extends Component{
     submit = async()=> {
         const{currentpassword,password,confirmpassword} =this.state;
         const username = this.props.route.params.username;
-        fetch('http://schoolapp.jatinwardhan.com/api/student/reset',{
+        fetch('https://login.schoolapp.info/api/student/reset',{
         method:'POST',
         headers:{
         Accept : 'application/json',

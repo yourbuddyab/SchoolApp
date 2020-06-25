@@ -35,7 +35,7 @@ export default class Growth extends Component {
     }
   } 
   componentDidMount(){
-    return fetch('http://schoolapp.jatinwardhan.com/api/resultshow/'+this.props.route.params.id+','+this.props.route.params.class_id)
+    return fetch('https://login.schoolapp.info/api/resultshow/'+this.props.route.params.id+','+this.props.route.params.class_id)
       .then((response) => response.json())
       .then((responseJson) => {
         data.labels = responseJson.testName,
