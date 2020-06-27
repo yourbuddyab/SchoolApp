@@ -15,51 +15,49 @@ export default class App extends Component {
       isLoading: true,
       response: [],
     }
-  } 
-  componentDidMount(){
-    return fetch('https://login.schoolapp.info/api/timetable/'+this.props.route.params.class_id)
-      .then((response) => response.json())
-      .then((responseJson) => {
-        // console.error(responseJson);
-        this.setState({
-          isLoading: false,
-          response: responseJson,
-        }, function(){
-
-        });
-      })
-      .catch((error) =>{
-        console.error(error);
+  }
+  async componentDidMount() {
+    try {
+      const response = await fetch('https://aps.schoolapp.info/api/timetable/' + this.props.route.params.class_id);
+      const responseJson = await response.json();
+      // console.error(responseJson);
+      this.setState({
+        isLoading: false,
+        response: responseJson,
       });
+    }
+    catch (error) {
+      console.error(error);
+    }
   }
   render() {
-    if(this.state.isLoading){
-      return(
-        <View style={{flex: 1, padding: 20}}>
-          <ActivityIndicator/>
+    if (this.state.isLoading) {
+      return (
+        <View style={{ flex: 1, padding: 20 }}>
+          <ActivityIndicator />
         </View>
       )
     }
 
     return (
-     <View style={styles.stage}>
-     <Text style={{textAlign:'center',paddingTop:'5%',fontSize:20}}>{this.state.response.testname}</Text>
-        <FlatList 
+      <View style={styles.stage}>
+        <Text style={{ textAlign: 'center', paddingTop: '5%', fontSize: 20 }}>{this.state.response.testname}</Text>
+        <FlatList
           data={this.state.response.data}
           renderItem={
-          ({ item }) => 
-            <Card containerStyle={{backgroundColor:'#e3e3e3',borderRadius:6}}>
-              <View>
-                <View style={{paddingVertical:"5%",paddingHorizontal:-5, flexDirection:'row', justifyContent:'space-between'}}>
-                  <Text>{item.date}</Text>
-                  <Text>{item.subname}</Text>
+            ({ item }) =>
+              <Card containerStyle={{ backgroundColor: '#e3e3e3', borderRadius: 6 }}>
+                <View>
+                  <View style={{ paddingVertical: "5%", paddingHorizontal: -5, flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <Text>{item.date}</Text>
+                    <Text>{item.subname}</Text>
+                  </View>
                 </View>
-              </View>
-            </Card>
+              </Card>
           }
           keyExtractor={item => item.id.toString()}
         />
-     </View>
+      </View>
     );
   }
 }
@@ -67,8 +65,8 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   stage: {
     backgroundColor: '#fff',
-    fontSize : 15,
+    fontSize: 15,
     paddingBottom: 20,
-    height:'100%',
+    height: '100%',
   },
 });

@@ -1,32 +1,22 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-import { WebView } from 'react-native-webview';
-import {request, PERMISSIONS} from 'react-native-permissions';
+import { View, Text, TouchableOpacity } from 'react-native'
+import WebView from 'react-native-webview'
+
 export default class Video extends Component {
-    componentDidMount() {
-        request(PERMISSIONS.ANDROID.STORAGE).then((result) => {
-            console.log(result);
-        });
-    }
     render() {
-        const { videoId } = this.props.route.params;
+        console.log(this.props)
+        const { videoID } = this.props.route.params
         return (
-            <View style={styles.container}>
+            <View style={{ flex: 1 }}>
                 <WebView
-                    javaScriptEnabled={true}
-                    source={{ uri: `https://www.youtube.com/embed/${videoId}` }}
-                    style={styles.video}
+                    pointerEvents={false}
+                    style={{ marginTop: -100 }}
+                    domStorageEnabled={true}
+                    source={{ uri: `https://www.youtube.com/embed/${videoID}?modestbranding=1&rel=0` }}
                 />
             </View>
         )
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    video: {
-        maxHeight: 200,
-    }
-})
+

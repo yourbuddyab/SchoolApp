@@ -13,7 +13,7 @@ export default class App extends React.Component {
       } 
 
       componentDidMount(){
-        return fetch('https://login.schoolapp.info/api/holiday')
+        return fetch('https://aps.schoolapp.info/api/holiday')
           .then((response) => response.json())
           .then((responseJson) => {
             // console.error(responseJson);

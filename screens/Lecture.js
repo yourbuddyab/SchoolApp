@@ -1,54 +1,76 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, TouchableOpacity, Image, SafeAreaView } from 'react-native';
-import { Icon } from 'native-base';
-import { FlatList } from 'react-native-gesture-handler';
-const Data = [
-  { id: '1', folderName: '28-05-2020' },
-  { id: '2', folderName: '29-05-2020' },
-  { id: '3', folderName: '30-05-2020' },
-]
+import { Text, StyleSheet, SafeAreaView, FlatList, ActivityIndicator, TouchableOpacity } from 'react-native'
 
-const RenderFolder = ({ folderName, menuBtn, icon, navigation }) => {
-  return (
-    <TouchableOpacity style={menuBtn} onPress={() => navigation.navigate('Subject', {
-      date: folderName
-    })}>
-      <Icon name='folder' style={icon} />
-      <Text>{folderName}</Text>
-    </TouchableOpacity>
-  );
-}
+import AsyncStorage from '@react-native-community/async-storage';
+import { Card, CardItem } from 'native-base';
 
 export default class Lecture extends Component {
-  render() {
-    const { navigation } = this.props;
-    const { container, menuBtn, icon, } = styles
+  state = {
+    isLoading: false,
+    response: [],
+  }
+  async componentDidMount() {
+    try {
+      this.setState({ isLoading: true })
+      const class_id = await AsyncStorage.getItem('class_id');
 
+      const response = await fetch(`https://aps.schoolapp.info/api/videoclass/record/${class_id}`);
+      const responseJson = await response.json();
+      console.log(responseJson);
+      this.setState({
+        isLoading: false,
+        response: responseJson,
+      });
+    }
+    catch (error) {
+      console.error(error);
+    }
+  }
+  render() {
+    const { container, center, hide } = styles
+    const { isLoading, response, } = this.state
+    const { navigation } = this.props
     return (
       <SafeAreaView style={container}>
         <FlatList
-          data={Data}
-          renderItem={({ item }) => <RenderFolder navigation={navigation} folderName={item.folderName} menuBtn={menuBtn} icon={icon} />
+          data={response}
+          renderItem={
+            ({ item }) =>
+              <RenderItem navigation={navigation} url={item.URL} />
           }
-          keyExtractor={item => item.id}
-          numColumns={3}
+          keyExtractor={(item, index) => 'key' + index}
         />
+        <ActivityIndicator size="large" style={isLoading ? center : hide} />
       </SafeAreaView>
     )
   }
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: '5%',
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    padding: "2%",
+    backgroundColor: "#fff",
   },
-  menuBtn: {
-    padding: '6%',
+  center: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: [{ translateX: -50, translateY: -50 }]
   },
-  icon: {
-    fontSize: 70,
-    color: '#ffe9a2'
-  }
-});
+  hide: {
+    display: 'none',
+  },
+})
+
+const RenderItem = ({ navigation, url }) => {
+  return (
+    <TouchableOpacity onPress={() => navigation.navigate('Classes', { url })}>
+      <Card style={{ paddingVertical: '2%' }}>
+        <CardItem>
+          <Text>Title</Text>
+        </CardItem>
+      </Card>
+    </TouchableOpacity>
+  )
+}

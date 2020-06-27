@@ -28,7 +28,7 @@ export default class Setting extends React.Component {
 
   async componentDidMount() {
     try {
-      const response = await fetch(`https://login.schoolapp.info/api/student/${this.username}`);
+      const response = await fetch(`https://aps.schoolapp.info/api/student/${this.username}`);
       const responseJson = await response.json();
       this.setState({
         isLoading: false,
@@ -51,9 +51,9 @@ export default class Setting extends React.Component {
       this.props.navigation.navigate('Setting')
     }
     const Logout = async () => {
-      await AsyncStorage.setItem('isLoggedIn', '0');
+      await AsyncStorage.removeItem('isLoggedIn');
       this.props.navigation.dispatch(
-        StackActions.replace('Logout')
+        StackActions.replace('AuthScreen')
       )
     }
     if (this.state.isLoading) {
@@ -73,7 +73,7 @@ export default class Setting extends React.Component {
               <View style={{ backgroundColor: '#fff', paddingVertical: '5%' }}>
                 <Image
                   style={{ borderRadius: 200, alignSelf: 'center', width: 250, height: 250 }}
-                  source={{ uri: `https://login.schoolapp.info/${this.state.dataSource.Image}` }}
+                  source={{ uri: `https://aps.schoolapp.info/${this.state.dataSource.Image}` }}
                 />
               </View>
               <Cell cellStyle="RightDetail" title="Student Name" detail={this.state.dataSource.studentName} />
@@ -85,6 +85,9 @@ export default class Setting extends React.Component {
             </Section>
             <TouchableOpacity style={styles.changeButton} onPress={changePassword}>
               <Text style={{ fontSize: 15, textAlign: 'center', color: '#fff', textTransform: 'uppercase' }}>Change Password</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.changeButton} onPress={Logout}>
+              <Text style={{ fontSize: 15, textAlign: 'center', color: '#fff', textTransform: 'uppercase' }}>Logout</Text>
             </TouchableOpacity>
           </TableView>
           <Text style={styles.powerBy}>Powerd by <Text style={{ fontWeight: 'bold' }} onPress={() => Linking.openURL('https://itplus.co.in')}>IT Plus</Text></Text>

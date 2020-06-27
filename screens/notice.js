@@ -14,7 +14,7 @@ export default class App extends React.Component {
       } 
       async componentDidMount(){
         try {
-          const response = await fetch('https://login.schoolapp.info/api/notice');
+          const response = await fetch('https://aps.schoolapp.info/api/notice');
           const responseJson = await response.json();
           // console.error(responseJson);
           this.setState({

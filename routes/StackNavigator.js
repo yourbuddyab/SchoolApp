@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'react-native'
 
-import Splash from '../screens/Splash';
+import Splash from '../screens/splash';
 import Home from '../screens/home';
 import Admin from '../screens/admin';
 import Login from '../screens/login';
@@ -23,6 +23,9 @@ import Logout from '../screens/Logout';
 import Classes from '../screens/Classes';
 import Lecture from '../screens/Lecture';
 import Subject from '../screens/Subject';
+import Online from '../screens/Online';
+import Submit from '../screens/Submit';
+import Video from '../screens/Video';
 
 export default class StackNavigator extends Component {
     render() {
@@ -68,9 +71,19 @@ export default class StackNavigator extends Component {
                     <Stack.Screen name="Fees" component={Fees} />
                     <Stack.Screen name="RecentResult" component={RecentResult} />
                     <Stack.Screen name="Downloads" component={Downloads} />
+
+                    <Stack.Screen
+                        name="Online"
+                        component={Online}
+                        options={{
+                            title: 'Online Classes',
+                        }}
+                    />
+
                     <Stack.Screen
                         name="Exam"
-                        component={Exam} options={{
+                        component={Exam}
+                        options={{
                             title: 'Exam Timetable',
                         }}
                     />
@@ -85,14 +98,37 @@ export default class StackNavigator extends Component {
                         name="Classes"
                         component={Classes}
                         options={{
-                            title: 'Video Classes',
+                            headerLeft: null,
+                            title: '',
+                            headerStyle: {
+                                height: 0
+                            }
                         }}
                     />
+                    <Stack.Screen
+                        name="Video"
+                        component={Video}
+                        options={{
+                            title: '',
+                            headerStyle: {
+                                height: 0
+                            }
+                        }}
+                    />
+                    
                     <Stack.Screen
                         name="Lecture"
                         component={Lecture}
                         options={{
                             title: 'Lecture',
+                        }}
+                    />
+
+                    <Stack.Screen
+                        name="Submit"
+                        component={Submit}
+                        options={{
+                            title: 'Submmission',
                         }}
                     />
 

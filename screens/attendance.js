@@ -25,7 +25,7 @@ export default class Attendance extends Component {
   async componentDidMount() {
     const id = this.props.route.params.id;
     try {
-      const response = await fetch('https://login.schoolapp.info/api/attendance/' + id+ '/' + moment().format('MMM'));
+      const response = await fetch('https://aps.schoolapp.info/api/attendance/' + id+ '/' + moment().format('MMM'));
       const responseJson = await response.json();
       // console.error(responseJson);
       this.setState({
@@ -42,7 +42,7 @@ export default class Attendance extends Component {
     this.setState({language: itemValue,isLoading: true,});
     const id = this.props.route.params.id;
     try {
-      const response = await fetch('https://login.schoolapp.info/api/attendance/' + id + '/' + itemValue);
+      const response = await fetch('https://aps.schoolapp.info/api/attendance/' + id + '/' + itemValue);
 
       const responseJson = await response.json();
       this.setState({

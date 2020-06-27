@@ -13,7 +13,7 @@ export default class Teacher extends React.Component {
     }
   } 
   componentDidMount(){
-    return fetch('https://login.schoolapp.info/api/teacher')
+    return fetch('https://aps.schoolapp.info/api/teacher')
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({
@@ -44,7 +44,7 @@ export default class Teacher extends React.Component {
                   return  (
                     
                     <View style={styles.card} key={Math.random()}>
-                       <Image style={{height:350}} source={{uri:'https://login.schoolapp.info/'+(y.images ? y.images : '/images/TeacherPic/notavb.jpg')+''}} />
+                       <Image style={{height:350}} source={{uri:'https://aps.schoolapp.info/'+(y.images ? y.images : '/images/TeacherPic/notavb.jpg')+''}} />
                        <Cell cellStyle="RightDetail" title="Teacher Name" detail={y.name}/>
                        <Cell cellStyle="RightDetail" title="Teacher Email" detail={y.email}/>
                        <Cell cellStyle="RightDetail" title="Date of birth" detail={y.dob}/>
