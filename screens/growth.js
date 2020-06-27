@@ -37,7 +37,7 @@ export default class Growth extends Component {
   }
   async componentDidMount() {
     try {
-      const response = await fetch(`https://aps.schoolapp.info/api/resultshow/${this.props.route.params.id},${this.props.route.params.class_id}`);
+      const response = await fetch(`https://login.schoolapp.info/api/resultshow/${this.props.route.params.id},${this.props.route.params.class_id}`);
       const responseJson = await response.json();
       data.labels = responseJson.testName ? responseJson.testName : data.labels,
         data.datasets[0].data = responseJson.data ? responseJson.data : data.datasets[0].data,

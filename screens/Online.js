@@ -14,7 +14,7 @@ export default class Online extends Component {
             this.setState({ isLoading: true })
             const class_id = await AsyncStorage.getItem('class_id');
 
-            const response = await fetch(`https://aps.schoolapp.info/api/videoclass/live/${class_id}`);
+            const response = await fetch(`https://login.schoolapp.info/api/videoclass/live/${class_id}`);
             const responseJson = await response.json();
             this.setState({
                 isLoading: false,

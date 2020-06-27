@@ -28,7 +28,7 @@ export default class Setting extends React.Component {
 
   async componentDidMount() {
     try {
-      const response = await fetch(`https://aps.schoolapp.info/api/student/${this.username}`);
+      const response = await fetch(`https://login.schoolapp.info/api/student/${this.username}`);
       const responseJson = await response.json();
       this.setState({
         isLoading: false,

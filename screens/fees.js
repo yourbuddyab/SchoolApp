@@ -19,7 +19,7 @@ export default class fees extends Component {
     const id = this.props.route.params.id;
     try {
       const response = await fetch(
-        'https://aps.schoolapp.info/api/fees/' + id,
+        'https://login.schoolapp.info/api/fees/' + id,
       );
       const responseJson = await response.json();
       // console.error(responseJson.fees);

@@ -16,7 +16,7 @@ export default class Gallery extends Component {
     }
   } 
   componentDidMount(){
-    return fetch('https://aps.schoolapp.info/api/gallery')
+    return fetch('https://login.schoolapp.info/api/gallery')
       .then((response) => response.json())
       .then((responseJson) => {
         // console.error(responseJson);

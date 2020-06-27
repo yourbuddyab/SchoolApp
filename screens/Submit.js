@@ -44,7 +44,7 @@ export default class Submit extends Component {
 
         const submit = () => {
             // const { title, description, image_path, image_type, image_fileName, } = this.state
-            // fetch('https://aps.schoolapp.info/api/submit', {
+            // fetch('https://login.schoolapp.info/api/submit', {
             //     method: 'POST',
             //     body: JSON.stringify({
             //         'title': title,

@@ -20,7 +20,7 @@ export default class App extends Component {
   }
   async componentDidMount() {
     try {
-      const response = await fetch(`https://aps.schoolapp.info/api/result/${this.props.route.params.id}`);
+      const response = await fetch(`https://login.schoolapp.info/api/result/${this.props.route.params.id}`);
       const responseJson = await response.json();
       this.setState({
         isLoading: false,

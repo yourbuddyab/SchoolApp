@@ -18,7 +18,7 @@ export default class App extends Component {
   }
   async componentDidMount() {
     try {
-      const response = await fetch('https://aps.schoolapp.info/api/timetable/' + this.props.route.params.class_id);
+      const response = await fetch('https://login.schoolapp.info/api/timetable/' + this.props.route.params.class_id);
       const responseJson = await response.json();
       // console.error(responseJson);
       this.setState({

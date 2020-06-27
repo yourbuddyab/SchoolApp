@@ -38,7 +38,7 @@ export default class Login extends Component {
 
     submit = async (username, password) => {
         this.setState({ status: true })
-        fetch('https://aps.schoolapp.info/api/student/login', {
+        fetch('https://login.schoolapp.info/api/student/login', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

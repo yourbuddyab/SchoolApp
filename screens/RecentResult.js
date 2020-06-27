@@ -11,7 +11,7 @@ export default class RecentResult extends Component {
         }
       }
       componentDidMount(){
-        return fetch('https://aps.schoolapp.info/api/recentresult/1')
+        return fetch('https://login.schoolapp.info/api/recentresult/1')
           .then((response) => response.json())
           .then((responseJson) => {
             this.setState({

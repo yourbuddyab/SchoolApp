@@ -13,7 +13,7 @@ export default class Teacher extends React.Component {
     }
   } 
   componentDidMount(){
-    return fetch('https://aps.schoolapp.info/api/teacher')
+    return fetch('https://login.schoolapp.info/api/teacher')
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({

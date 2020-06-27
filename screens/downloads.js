@@ -13,7 +13,7 @@ export default class Downloads extends Component {
       }
       async componentDidMount(){
         try {
-          const response = await fetch('https://aps.schoolapp.info/api/downloads');
+          const response = await fetch('https://login.schoolapp.info/api/downloads');
           const responseJson = await response.json();
           this.setState({
             isLoading: false,
